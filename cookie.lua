@@ -77,7 +77,7 @@ local function build(dict, options)
 	return concat(res, "; ")
 end
 
-local function parse(data, options)
+local function parse(data)
 	local res = {}
 
 	for pair in gmatch(data, "[^;]+") do
