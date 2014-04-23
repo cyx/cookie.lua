@@ -48,12 +48,12 @@ local function to_utc_string(time)
 end
 
 local CODEX = {
-	{"max_age", "Max-Age=%d"},
-	{"domain", "Domain=%s"},
-	{"path", "Path=%s"},
+	{"max_age", "Max-Age=%d", tostring},
+	{"domain", "Domain=%s", tostring},
+	{"path", "Path=%s", tostring},
 	{"expires", "Expires=%s", to_utc_string},
-	{"http_only", "HttpOnly"},
-	{"secure", "Secure"},
+	{"http_only", "HttpOnly", tostring},
+	{"secure", "Secure", tostring},
 }
 
 local function build(dict, options)
@@ -70,11 +70,7 @@ local function build(dict, options)
 		local val = options[key]
 
 		if val then
-			if fn then
-				val = fn(val)
-			end
-
-			insert(res, format(template, val))
+			insert(res, format(template, fn(val)))
 		end
 	end
 
