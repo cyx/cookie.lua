@@ -31,6 +31,11 @@ local sub    = string.sub
 local gsub   = string.gsub
 local find   = string.find
 
+-- identity function
+local function identity(val)
+	return val
+end
+
 -- trim and remove double quotes
 local function clean(str)
 	  local s = gsub(str, "^%s*(.-)%s*$", "%1")
@@ -48,12 +53,12 @@ local function to_utc_string(time)
 end
 
 local CODEX = {
-	{"max_age", "Max-Age=%d", tostring},
-	{"domain", "Domain=%s", tostring},
-	{"path", "Path=%s", tostring},
+	{"max_age", "Max-Age=%d", identity},
+	{"domain", "Domain=%s", identity},
+	{"path", "Path=%s", identity},
 	{"expires", "Expires=%s", to_utc_string},
-	{"http_only", "HttpOnly", tostring},
-	{"secure", "Secure", tostring},
+	{"http_only", "HttpOnly", identity},
+	{"secure", "Secure", identity},
 }
 
 local function build(dict, options)
