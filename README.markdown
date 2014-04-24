@@ -44,4 +44,4 @@ assert(equal({ foo="bar", bar="baz" },
 
 ## license
 
-MIt
+MIT
