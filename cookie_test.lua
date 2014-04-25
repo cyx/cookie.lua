@@ -52,7 +52,7 @@ local expected =
 	"Path=/; Expires=Wed, 23 Apr 2014 13:01:14 GMT; " ..
 	"HttpOnly; Secure"
 
-assert(expected == 
+assert(expected ==
 	cookie.build({ foo="bar" }, options))
 
 -- case 9: parsing
